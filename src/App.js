@@ -6,8 +6,8 @@ class App extends Component {
   constructor(){
     super();
     this.todoItem = [
-        {title : 'Di mua xang'},
-        {title : 'Dat cho di dao'},
+        {title : 'Di mua xang', isComplete : true},
+        {title : 'Dat cho di dao', isComplete :true},
         {title : 'Mua bim bim'}
       ];
     }
@@ -15,11 +15,10 @@ class App extends Component {
     render() {
       return(
         <div className="App">
-          {
-            this.todoItem.map((item, index) => 
-              <TodoItem key={index} title={item.title} />
-            )
-          }
+          {this.todoItem.length > 0 && this.todoItem.map((item, index) => 
+              <TodoItem key={index} item={item} />                           //if todo item is none, write 'Nothing here'.
+            )} 
+          {this.todoItem.length ===0 && 'Nothing here' }   
         </div>
       )
     }
